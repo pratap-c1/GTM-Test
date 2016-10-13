@@ -27,5 +27,6 @@ public class MainActivity extends AppCompatActivity {
   protected void onResume() {
     super.onResume();
     iAnalytics.track("pageview", iAnalytics.mapOf("test1", "test2"));
+    ContainerHolderSingleton.getContainerHolder().refresh();
   }
 }
