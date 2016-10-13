@@ -11,8 +11,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="in.curium.gtmmytestapp.MainActivity">
 
-  <TextView
-      android:layout_width="wrap_content"
+  <Button
+      android:id="@+id/gtm_btn"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="Hello World!"/>
+      android:text="GTM"
+  />
 </RelativeLayout>
