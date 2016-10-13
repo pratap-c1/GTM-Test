@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 public class App extends Application {
   private final long TIMEOUT_FOR_CONTAINER_OPEN_MILLISECONDS = 2000L;
+  private final String GA_ID = "GTM-5L457M"; // "GTM-M2XVS9";
 
   @Override
   public void onCreate() {
@@ -20,11 +21,12 @@ public class App extends Application {
     ga.init(getApplicationContext());
     TagManager tagManager = TagManager.getInstance(getApplicationContext());
     PendingResult<ContainerHolder> pending =
-        tagManager.loadContainerPreferNonDefault("GTM-M2XVS9", R.raw.gtm_m2xvs9);
+        tagManager.loadContainerPreferNonDefault(GA_ID, R.raw.gtm_5l457m);
     tagManager.setVerboseLoggingEnabled(true);
     pending.setResultCallback(new ResultCallback<ContainerHolder>() {
       @Override
       public void onResult(ContainerHolder containerHolder) {
+        Log.d("app", "entering onResult");
         ContainerHolderSingleton.setContainerHolder(containerHolder);
         Container container = containerHolder.getContainer();
         if (!containerHolder.getStatus().isSuccess()) {
