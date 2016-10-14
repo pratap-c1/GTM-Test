@@ -12,7 +12,7 @@ import com.google.android.gms.tagmanager.PreviewActivity;
 public class MainActivity extends AppCompatActivity {
 
   IAnalytics iAnalytics;
-  String SCREEN_NAME = "Main Activity";
+  String SCREEN_NAME = "Main Activity for testing";
   String eventName = "openScreen";
 
   @Override
