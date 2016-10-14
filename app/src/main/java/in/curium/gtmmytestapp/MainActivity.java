@@ -6,11 +6,14 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import com.google.android.gms.tagmanager.DataLayer;
 import com.google.android.gms.tagmanager.PreviewActivity;
 
 public class MainActivity extends AppCompatActivity {
 
   IAnalytics iAnalytics;
+  String SCREEN_NAME = "Main Activity";
+  String eventName = "openScreen";
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +44,13 @@ public class MainActivity extends AppCompatActivity {
   @Override
   protected void onResume() {
     super.onResume();
-    iAnalytics.track("pageview", iAnalytics.mapOf("test1", "test2"));
+
+    iAnalytics.track(eventName, iAnalytics.mapOf("screenName", SCREEN_NAME));
+    Log.d("onResume", "onResume");
+   // mDataLayer.push(DataLayer.mapOf("event", "openScreen", "screenName", SCREEN_NAME));
+    //dataLayer.pushEvent("openScreen", DataLayer.mapOf("screenName", screenName));
+
+
     mHandler.postDelayed(mRefresh, 5000L);
   }
 
