@@ -26,7 +26,7 @@
         android:label="@string/app_name"
         android:noHistory="true">  <!-- optional, removes the previewActivity from the activity stack. -->
       <intent-filter>
-        <data android:scheme="tagmanager.c.com.google.android.tagmanager.examples.cuteanimals"/>
+        <data android:scheme="in.curium.gtmmytestapp"/>
         <action android:name="android.intent.action.VIEW"/>
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
