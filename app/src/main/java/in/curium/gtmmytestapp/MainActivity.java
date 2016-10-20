@@ -13,6 +13,8 @@ import com.google.android.gms.tagmanager.TagManager;
 public class MainActivity extends AppCompatActivity {
 
   IAnalytics iAnalytics;
+  String SCREEN_NAME = "Main Activity for testing";
+  String eventName = "openScreen";
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +46,13 @@ public class MainActivity extends AppCompatActivity {
   @Override
   protected void onResume() {
     super.onResume();
-    //iAnalytics.track("pageview", iAnalytics.mapOf("test1", "test2"));
-    DataLayer dataLayer = TagManager.getInstance(this).getDataLayer();
-    dataLayer.pushEvent("mainActivityOpen", DataLayer.mapOf("screenName", "MainActivity"));
+
+    iAnalytics.track(eventName, iAnalytics.mapOf("screenName", SCREEN_NAME));
+    Log.d("onResume", "onResume");
+   // mDataLayer.push(DataLayer.mapOf("event", "openScreen", "screenName", SCREEN_NAME));
+    //dataLayer.pushEvent("openScreen", DataLayer.mapOf("screenName", screenName));
+
+
     mHandler.postDelayed(mRefresh, 5000L);
   }
 
