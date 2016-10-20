@@ -6,7 +6,9 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import com.google.android.gms.tagmanager.DataLayer;
 import com.google.android.gms.tagmanager.PreviewActivity;
+import com.google.android.gms.tagmanager.TagManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,11 +27,12 @@ public class MainActivity extends AppCompatActivity {
     });
     mHandler = new Handler();
   }
-
+  boolean DISABLE = true;
   Handler mHandler;
   Runnable mRefresh = new Runnable() {
     @Override
     public void run() {
+      if (DISABLE) return;
       Log.d("run", "in run");
       if (ContainerHolderSingleton.getContainerHolder() != null) {
         Log.d("run", "singleton not null");
@@ -41,7 +44,9 @@ public class MainActivity extends AppCompatActivity {
   @Override
   protected void onResume() {
     super.onResume();
-    iAnalytics.track("pageview", iAnalytics.mapOf("test1", "test2"));
+    //iAnalytics.track("pageview", iAnalytics.mapOf("test1", "test2"));
+    DataLayer dataLayer = TagManager.getInstance(this).getDataLayer();
+    dataLayer.pushEvent("mainActivityOpen", DataLayer.mapOf("screenName", "MainActivity"));
     mHandler.postDelayed(mRefresh, 5000L);
   }
 
